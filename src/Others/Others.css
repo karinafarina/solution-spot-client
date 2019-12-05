@@ -1,0 +1,20 @@
+.others {
+  max-width: 500px;
+  margin: 120px auto;
+}
+
+form.comments {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+textarea#new-comment {
+  width: 80%;
+  margin: 20px auto;
+}
+
+form.comments input {
+  margin: 8px auto;
+  border: 1px solid black;
+}
