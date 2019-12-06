@@ -27,7 +27,7 @@ export default function LandingPage() {
           </h3>
         </header>
       </section> */}
-      <section>
+      {/* <section>
         <header>
           <h3>
             <Link to='/others'>
@@ -35,12 +35,12 @@ export default function LandingPage() {
             </Link>
           </h3>
         </header>
-      </section>
-      <section>
+      </section> */}
+      {/* <section>
         <header>
           <h3>See ratings and comments on your solutions, start a conversation!</h3>
         </header>
-      </section>
+      </section> */}
       <footer>Footer</footer>
     </div>
   )

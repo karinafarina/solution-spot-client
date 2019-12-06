@@ -5,22 +5,66 @@ import LandingPage from './LandingPage/LandingPage';
 import SignUp from './SignUp/SignUp';
 import Login from './Login/Login';
 import Category from './Category/Category'
-import SolutionsHome from './SolutionsHome/SolutionsHome';
+import AddSolutions from './AddSolutions/AddSolutions';
 import Others from './Others/Others';
 import './App.css';
+import dummyStore from './dummy-store';
 
 class App extends Component {
+  state = {
+    categories: [],
+    solutions: []
+  }
+
+  componentDidMount() {
+    //dummyData loading
+    setTimeout(() => this.setState(dummyStore), 600);
+  }
   render() {
+    
+    const { categories, solutions } = this.state;
     return (
       <BrowserRouter>
       <div className='App'>
         <Route path='/' component={Navigation} />
-        <Route exact path='/' component={LandingPage}/>
+        <Route
+           exact 
+           path='/' 
+           component={LandingPage}
+          //  render={routeProps => (
+          //    <LandingPage
+          //       categories={categories}
+          //       solutions={solutions}
+          //       {...routeProps}
+          //     />
+          //  )}
+        />
+          
         <Route path='/sign-up' component={SignUp}/>
         <Route path='/log-in' component={Login}/>
-        <Route path='/solutions-home' component={SolutionsHome}/>
-        <Route path='/category' component={Category}/>
-        <Route path='/others' component={Others}/>
+        <Route 
+          path='/category'
+            render={routeProps => (
+              <Category
+                categories={categories}
+                solutions={solutions}
+                {...routeProps}
+              />
+            )}
+          />
+        <Route path='/add-solutions' component={AddSolutions}/>
+        
+        {/* Add in later version */}
+        <Route 
+          path='/others/:solution_id' 
+          render={routeProps => (
+            <Others
+              categories={categories}
+              solutions={solutions}
+              {...routeProps}
+            />
+          )}
+        />
       </div>
       </BrowserRouter>
     );
