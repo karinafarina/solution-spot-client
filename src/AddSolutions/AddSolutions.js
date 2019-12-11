@@ -5,7 +5,8 @@ export default class AddSolutions extends Component {
 
   handleSubmit = (e) => {
      e.preventDefault();
-    console.log('Hi')
+    console.log('Hi', this.props)
+    
     // save new post object to the array
     // this.props.history.push('/')
   }
