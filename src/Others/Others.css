@@ -1,7 +1,13 @@
 .others {
   max-width: 500px;
   margin: 120px auto;
+  padding: 0 30px;
 }
+
+.others p {
+  margin-bottom: 20px;
+}
+
 
 form.comments {
   display: flex;
