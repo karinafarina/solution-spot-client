@@ -16,8 +16,7 @@ export default class Category extends Component {
         <h3>Categories</h3>
         
         <form className="categories">
-          <label>
-            Pick Category:
+          
           <select id="select" value={selectedCategory} onChange={e => setSelectedCategory(e)}>
             <option value="blank">Choose a Category</option>
             {categories.map(category =>
@@ -26,7 +25,7 @@ export default class Category extends Component {
               {/* <option value="new-category">New Category</option> */}
             {/* Add a category to create new category which appends to the categories in the database */}
           </select>
-          </label>
+          
           {/* On submit, go to SolutionsHome and dynamically add chosen category value to top of page */}
           {/* <input type="submit" value="Submit" /> */}
         </form>

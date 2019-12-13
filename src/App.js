@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import Navigation from './Navigation/Navigation';
 import LandingPage from './LandingPage/LandingPage';
 import SignUp from './SignUp/SignUp';
@@ -10,6 +10,10 @@ import Others from './Others/Others';
 import Context from './context';
 import './App.css';
 import dummyStore from './dummy-store';
+
+/* eslint-disable no-restricted-globals */
+
+
 
 class App extends Component {
   state = {
@@ -41,15 +45,13 @@ class App extends Component {
           content: commentInput,
       }
     ])
-    
-      
       //  TODO: ADD NEW COMMENT TO CONTEXT, RANDOMLY GENERATE ID'S, USE ACTUAL SOLUTIONID AND USERID
     })
-    
   }
 
   handleSubmitNewSolution = (e, solutionInput) => {
     e.preventDefault();
+    console.log('this', this.props)
     this.setState({
       solutions: this.state.solutions.concat([
         {
@@ -60,12 +62,9 @@ class App extends Component {
           content: solutionInput,
         }
       ])
-    })
-    
-    // <Redirect push to="/category" />
+    }, () => { this.props.history.push('/category')});
+
    //go to category route
-  
-    
   }
 
   handleDeleteSolution = solutionId => {
@@ -91,7 +90,7 @@ class App extends Component {
     }
     return (
       <Context.Provider value={contextValue}>
-        <BrowserRouter>
+        
           <div className='App'>
             <Route path='/' component={Navigation} />
             <Route
@@ -108,10 +107,10 @@ class App extends Component {
             {/* Add in later version */}
             <Route path='/others/:solution_id' component={Others}/>
           </div>
-        </BrowserRouter>
+        
       </Context.Provider>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

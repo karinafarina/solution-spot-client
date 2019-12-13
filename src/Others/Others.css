@@ -4,8 +4,13 @@
   padding: 0 30px;
 }
 
+.others h5 {
+  text-align: left;
+}
+
 .others p {
   margin-bottom: 20px;
+  text-align: left;
 }
 
 
