@@ -11,7 +11,7 @@ export class Comments extends Component {
     return (
       <div className="comments">
         <h4>Comments</h4>
-        {this.props.comments.map(comment => <p key={comment.id}>{comment.content}</p>)}
+        {this.props.comments.map((comment, index) => <p key={index}>{comment.content}</p>)}
       </div>
     )
   }

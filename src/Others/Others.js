@@ -11,6 +11,7 @@ export default class Others extends Component  {
   };
 
   handleCommentInput = (e) => {
+    // this.state.textAreaValue.value = "";
     this.setState({ textAreaValue: e.target.value })
   }
 
@@ -19,17 +20,18 @@ export default class Others extends Component  {
     let solutionId = this.props.match.params.solution_id;
     let solution = this.context.solutions.filter(solution => solutionId === solution.id);
     let users = this.context.users.filter(user => user.id === solution[0].userId);
+    let author = users[0].name;
     let comments = this.context.comments.filter(comment => comment.solutionId === solutionId);
     
     return (
       <div className="others">
-        <h2>{users[0].name}</h2>
+        <h2>{author}</h2>
         <p>{solution[0].content}</p>
         
         {/* // TODO: CREATE A FUNCTIONAL COMPONENT FOR RENDERING AND STYLING COMMENTS */}
         <Comments comments={comments}/>
         
-        <form className="comments" onSubmit={e => this.context.handleCommentSubmit(e, this.state.textAreaValue)}>
+        <form className="comments" onSubmit={e => this.context.handleCommentSubmit(e, this.state.textAreaValue, solutionId)}>
           <label htmlFor="new-comment" id="new-comment">Comment</label>
           <textarea name="new-comment" id="new-comment" cols="50" rows="20" onChange={e => this.handleCommentInput(e)}></textarea>
           <input type="submit"/>

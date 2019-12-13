@@ -19,7 +19,7 @@ export default class Category extends Component {
           <label>
             Pick Category:
           <select id="select" value={selectedCategory} onChange={e => setSelectedCategory(e)}>
-            <option value="blank"></option>
+            <option value="blank">Choose a Category</option>
             {categories.map(category =>
             <option key={category.id} value={category.id}>{category.title}</option>
             )}

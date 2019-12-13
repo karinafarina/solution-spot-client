@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Navigation from './Navigation/Navigation';
 import LandingPage from './LandingPage/LandingPage';
 import SignUp from './SignUp/SignUp';
@@ -29,21 +29,43 @@ class App extends Component {
     this.setState({ selectedCategory: e.target.value })
   };
 
-  handleCommentSubmit = (e, commentInput) => {
+  handleCommentSubmit = (e, commentInput, solutionId) => {
     e.preventDefault();
-    
+    console.log('e, comentinput', e, commentInput)
     this.setState({
       comments: this.state.comments.concat([ 
         {
-          id: "c1",
-          userId: "u1",
-          solutionId: "s4",
+          id: "",
+          userId:"",
+          solutionId: solutionId,
           content: commentInput,
       }
     ])
+    
       
       //  TODO: ADD NEW COMMENT TO CONTEXT, RANDOMLY GENERATE ID'S, USE ACTUAL SOLUTIONID AND USERID
     })
+    
+  }
+
+  handleSubmitNewSolution = (e, solutionInput) => {
+    e.preventDefault();
+    this.setState({
+      solutions: this.state.solutions.concat([
+        {
+          id: "",
+          userId: "",
+          categoryId: "",
+          modified: Date(),
+          content: solutionInput,
+        }
+      ])
+    })
+    
+    // <Redirect push to="/category" />
+   //go to category route
+  
+    
   }
 
   handleDeleteSolution = solutionId => {
@@ -64,6 +86,7 @@ class App extends Component {
       users: this.state.users,
       comments: this.state.comments,
       handleCommentSubmit: this.handleCommentSubmit,
+      handleSubmitNewSolution: this.handleSubmitNewSolution,
       deleteSolution: this.handleDeleteSolution
     }
     return (
@@ -79,7 +102,7 @@ class App extends Component {
               
             <Route path='/sign-up' component={SignUp}/>
             <Route path='/log-in' component={Login}/>
-            <Route path='/category'component={Category}/>
+            <Route path='/category' component={Category}/>
             <Route path='/add-solutions' component={AddSolutions}/>
             
             {/* Add in later version */}

@@ -10,5 +10,6 @@ export default React.createContext({
   deleteSolution: () => {},
   selectedCategory: () => {},
   setSelectedCategory: () => {},
+  handleSubmitNewSolution: () => {},
   handleCommentSubmit: () => {}
 })
