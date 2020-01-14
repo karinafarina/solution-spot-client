@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Context from '../context';
 import Comments from '../Comments/Comments';
-import './Others.css';
+import './SolutionView.css';
 
-export default class Others extends Component  {
+class SolutionView extends Component  {
   static contextType = Context;  
   
   state = {
@@ -17,16 +17,17 @@ export default class Others extends Component  {
   }
 
   render() {
-    
-    let solutionId = this.props.match.params.solution_id;
+    let solutionId = parseInt(this.props.match.params.solutionId);
+    console.log('solutionId', typeof(solutionId));
     let solution = this.context.solutions.filter(solution => solutionId === solution.id);
+    console.log('solution', solution)
     let users = this.context.users.filter(user => user.id === solution[0].userId);
     let author = users[0].name;
     let comments = this.context.comments.filter(comment => comment.solutionId === solutionId);
     
     return (
-      <div className="others">
-        <Link to="/category"><h5>Go back</h5></Link>
+      <div className="solution-view">
+        <Link to="/categories"><h5>Go back</h5></Link>
         <h3>{author}</h3>
         <p>{solution[0].content}</p>
         
@@ -43,3 +44,5 @@ export default class Others extends Component  {
     )
   }
 }
+
+export default withRouter(SolutionView);

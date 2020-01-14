@@ -1,14 +1,14 @@
-.others {
+.solution-view {
   max-width: 500px;
   margin: 120px auto;
   padding: 0 30px;
 }
 
-.others h5 {
+.solution-view h5 {
   text-align: left;
 }
 
-.others p {
+.solution-view p {
   margin-bottom: 20px;
   text-align: left;
 }

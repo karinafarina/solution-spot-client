@@ -11,7 +11,7 @@ export default function LandingPage() {
       <section>
         <header>
           <h3>
-            <Link to='/category'>
+            <Link to='/categories'>
               Choose from Categories of issues to post your solution ideas!
             </Link>
           </h3>

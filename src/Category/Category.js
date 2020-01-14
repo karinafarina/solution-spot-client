@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import Context from '../context'
-import Solutions from '../Solutions/Solutions'
+import Context from '../context';
+import AddCategory from '../AddCategory/AddCategory';
+import FilteredSolutions from '../FilteredSolutions/FilteredSolutions'
 import './Category.css';
 
 export default class Category extends Component {
@@ -29,11 +30,13 @@ export default class Category extends Component {
           {/* On submit, go to SolutionsHome and dynamically add chosen category value to top of page */}
           {/* <input type="submit" value="Submit" /> */}
         </form>
+
+        <AddCategory>Add Category</AddCategory>
         
         <div className="solutions">
           <h4>Solutions</h4>
           
-            <Solutions/>
+            <FilteredSolutions/>
           
           <Link to='./add-solutions'><h4>Add Your Solution</h4></Link> 
         </div>

@@ -5,6 +5,7 @@ export default React.createContext({
   categories: [],
   users: [],
   comments: [],
+  addUser: () => {},
   addCategory: () => {},
   addSolution: () => {},
   deleteSolution: () => {},

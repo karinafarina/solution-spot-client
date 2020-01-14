@@ -12,12 +12,12 @@ export default function Navigation() {
       </h5>
       <div className="nav-group">
         <h5>
-          <Link to="/sign-up">
+          <Link to="sign-up">
             Sign Up
           </Link>
         </h5>
         <h5>
-          <Link to="/log-in">
+          <Link to="/login">
             Log in
           </Link>
         </h5>
