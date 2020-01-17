@@ -2,100 +2,33 @@ import React, { Component } from 'react';
 import Context from '../context';
 import config from '../config';
 import ValidationError from '../ValidationError';
+import AuthApiService from '../services/auth-api-service'
 import './AddUser.css';
 
 export default class AddUser extends Component {
   
-  static contextType = Context;
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      userName: {
-        value: '',
-        touched: false
-      },
-      email: {
-        value: '',
-        touched: false
-      },
-      userPassword: {
-        value: '',
-        touched: false
-      },
-      userNameError: null,
-      emailError: null,
-      userPasswordError: null
-    };
+  static defaultProps = {
+    onRegistrationSuccess: () => {}
   }
+
+  state = { error: null }
     
-  updateUserName(userName) {
-    this.setState({ userName: { value: userName, touched: true } })
-  };
-  updateEmail(email) {
-    this.setState({ email: { value: email, touched: true } })
-  };
-  updateUserPassword(userPassword) {
-    this.setState({ userPassword: { value: userPassword, touched: true } })
-  };
-  
+
   handleAddUser = e => {
     e.preventDefault();
     //get form fields from event
+    const { email, userPassword } = e.target;
 
-    const userName = this.state.userName.value.trim();
-    const email = this.state.email.value.trim();
-    const userPassword = this.state.userPassword.value.trim();
-    console.log('fields', userName, email, userPassword)
-
-    const options = {
-      method: 'POST',
-      body: JSON.stringify({ userName, email, userPassword }),
-      headers: {
-        "content-type": "application/json",
-      }
-    }
-    fetch(`${config.API_BASE_URL}/users`, options)
-      .then(res => {
-        console.log('res', res)
-        if(!res.ok) {
-          throw new Error('Something went wrong, please try again later');
-        }
-        return res.json();
+    this.setState({ error: null })
+    AuthApiService.postUser({
+      email: email.value,
+      userPassword: userPassword.value
+    })
+      .then(user => {
+        email.value = ''
+        userPassword.value = ''
+        this.props.onRegistrationSuccess()
       })
-      .then((user) => {
-        console.log('newUser', user)
-        this.context.addUser(user);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-      this.props.history.push('/')
-  }
-
-  validateUserName() {
-    const userName = this.state.userName.value.trim();
-    if(userName.length === 0) {
-      return "User name is required";
-    } else if (userName.length < 3) {
-      return "User name must be at least 3 characters long";
-    }
-  }
-
-  validateEmail() {
-    const email = this.state.email.value.trim();
-    if (email.length === 0) {
-      return "Email is required";
-    } 
-  }
-
-  validateUserPassword() {
-    const userPassword = this.state.userPassword.value.trim();
-    if (userPassword.length === 0) {
-      return "Password is required";
-    } else if (userPassword.length < 3) {
-      return "Password name must be at least 3 characters long";
-    }
   }
 
   render() {

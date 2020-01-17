@@ -5,12 +5,17 @@ export default React.createContext({
   categories: [],
   users: [],
   comments: [],
+  
   addUser: () => {},
+  setCurrentUser: () => {},
   addCategory: () => {},
+  
+  currentCategoryId: () => { },
+  setCurrentCategoryId: () => { },
+
   addSolution: () => {},
   deleteSolution: () => {},
-  selectedCategory: () => {},
-  setSelectedCategory: () => {},
+  
   handleSubmitNewSolution: () => {},
   handleCommentSubmit: () => {}
 })

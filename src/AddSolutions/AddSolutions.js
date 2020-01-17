@@ -6,37 +6,32 @@ import config from '../config';
 import './AddSolutions.css';
 
 class AddSolutions extends Component {
-  static defaultProps = {
-    history: {
-      push: () => { }
-    },
-  }
   
   static contextType = Context;
-  // constructor(props) {
-  //   super(props)
-  //   //HOW DO I GET userId, categoryId of this solution
-  //   this.state = {
-  //     content: {
-  //       value: '',
-  //       touched: false
-  //     },
-  //     userId: {
-  //       value: ''
-  //     },
-  //     categoryId: {
-  //       value: ''
-  //     },
+  constructor(props) {
+    super(props)
+    //HOW DO I GET userId, categoryId of this new solution
+    this.state = {
+      content: {
+        value: '',
+        touched: false
+      },
+      // userId: {
+      //   value: this.context.currentUserId,
+      // },
+      // categoryId: {
+      //   value: 0,
+      // },
 
-  //     contentError: null,
-  //   };
-  // }
+      contentError: null,
+    };
+  }
 
-  // updateContent(content) {
-  //   this.setState({ content: { value: content, touched: true } })
-  // };
+  updateContent(content) {
+    this.setState({ content: { value: content, touched: true } })
+  };
 
-  //Not sure about this
+ 
   // updateUserId = e => {
   //   this.setState({ userId: e.target.value })
   // }
@@ -45,16 +40,16 @@ class AddSolutions extends Component {
     e.preventDefault();
     const newSolution = {
       content: this.state.content.value.trim(),
-      userId: this.state.userId,
-      categoryId: this.state.categoryId,
+      userId: this.context.currentUserId,
+      categoryId: this.context.currentCategoryId,
       modified: new Date()
     }
      
-    console.log('solutionFields', content, userId, categoryId)
+    console.log('solutionFields', newSolution)
 
     const options = {
       method: 'POST',
-      body: JSON.stringify(newNote),
+      body: JSON.stringify(newSolution),
       headers: {
         "content-type": "application/json",
       }
@@ -79,14 +74,17 @@ class AddSolutions extends Component {
   }
 
   render() {
-    const { categories=[] } = this.context
-
+    const currentCategoryId = this.context.currentCategoryId;
+    const currentUserId = this.context.currentUserId;
+    const currentCategory = this.context.categories.find(category => currentCategoryId === category.id);
+    console.log('currentcatid', currentCategoryId)
+    console.log('curentUser', currentUserId)
     return (
       <div className="solutions">
         <h3>Post New Solutions</h3>
         <div className="form-container">
           {/* replace category with the category that was selected in category page */}
-          <h4>Category</h4>
+          <h4>{currentCategory.name}</h4>
           <form className="solutions-form" onSubmit={this.handleAddSolution}>
             <label htmlFor="Content">My Solution Content</label>
             <textarea id="content" name="content" cols="30" rows="10" onChange={e => this.updateContent(e.target.value)}></textarea>

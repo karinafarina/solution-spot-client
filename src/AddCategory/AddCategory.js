@@ -17,6 +17,7 @@ class AddCategory extends Component {
         touched: false
       },
       titleError: null,
+      show: false,
     };
   }
 
@@ -52,7 +53,7 @@ class AddCategory extends Component {
       .catch(error => {
         console.log(error)
       })
-    // this.props.history.push('/')
+    this.toggleShow();
   }
 
   validateTitle() {
@@ -64,22 +65,29 @@ class AddCategory extends Component {
     }
   }
 
+  toggleShow = () => {
+    const { show } = this.state;
+    this.setState({
+      show: !show
+    })
+  }
+
   render() {
     const titleError = this.validateTitle();
 
     return (
       <div className="new-category">
-        <h2>Add New Category</h2>
-        <form className='new-category-form' onSubmit={this.handleAddCategory}>
+        <button type="button" onClick={this.toggleShow}>Add Category</button>
+        {this.state.show ? <form className='new-category-form' onSubmit={this.handleAddCategory}>
           <div>
-            <label htmlFor="title">Title</label>
             <input placeholder='Title' type="text" name='title' id='title' onChange={e => this.updateTitle(e.target.value)} />
             {this.state.title.touched && (
               <ValidationError message={titleError} />
             )}
           </div>
           <button type='submit'>Submit</button>
-        </form>
+        </form> : ""}
+        
       </div>
     )
   }

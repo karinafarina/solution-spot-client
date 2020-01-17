@@ -9,10 +9,10 @@ export  default class FilteredSolutions extends Component {
   static contextType = Context;
   render() {
     let outputDivs;
-    let { solutions, selectedCategory } = this.context;
+    let { solutions, currentCategoryId } = this.context;
     
-    const filteredSolutions = solutions.filter(solution => solution.categoryId === parseInt(selectedCategory));
-    const solutionsToUse = selectedCategory ? filteredSolutions : solutions;
+    const filteredSolutions = solutions.filter(solution => solution.categoryId === parseInt(currentCategoryId));
+    const solutionsToUse = currentCategoryId ? filteredSolutions : solutions;
 
     outputDivs = solutionsToUse.map(entry => {
       return (    

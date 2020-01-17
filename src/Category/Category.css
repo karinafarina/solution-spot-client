@@ -1,6 +1,7 @@
 .categories {
   max-width: 500px;
   margin: 120px auto;
+  margin-bottom: 0;
 }
 
 form.categories {

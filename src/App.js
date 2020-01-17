@@ -10,18 +10,19 @@ import SolutionView from './SolutionView/SolutionView';
 import Context from './context';
 import './App.css';
 import config from './config';
-// import dummyStore from './dummy-store';
 
 /* eslint-disable no-restricted-globals */
 
 class App extends Component {
+  
   constructor(props) {
     super(props) 
       this.state = {
         categories: [],
-        selectedCategory: 0,
+        currentCategoryId: 0,
         solutions: [],
         users: [],
+        currentUserId: 0,
         comments: []
       };
   }
@@ -61,14 +62,19 @@ class App extends Component {
       .then(([users, categories, solutions, comments]) => {
         this.setState({ users, categories, solutions, comments })
       })
-      .catch(error => {
-        console.log(error({error}));
-      })
+      // .catch(error => {
+      //   console.log(error({error}));
+      // })
   };
 
-  setSelectedCategory = (e) => {
-    this.setState({ selectedCategory: e.target.value })
+  setCurrentCategoryId = (e) => {
+    this.setState({ currentCategoryId: parseInt(e.target.value, 10) })
   };
+
+  setCurrentUser = (currentUserId) => {
+    console.log('e', currentUserId)
+    this.setState({ currentUserId })
+  }
 
   handleCommentSubmit = (e, commentInput, solutionId) => {
     e.preventDefault();
@@ -85,24 +91,6 @@ class App extends Component {
       //  TODO: ADD NEW COMMENT TO CONTEXT, RANDOMLY GENERATE ID'S, USE ACTUAL SOLUTIONID AND USERID
     })
   }
-
-  // handleSubmitNewSolution = (e, solutionInput) => {
-  //   e.preventDefault();
-  //   console.log('this', this.props.match.params)
-  //   this.setState({
-  //     solutions: this.state.solutions.concat([
-  //       {
-  //         id: "",
-  //         userId: "",
-  //         categoryId: "",
-  //         modified: Date(),
-  //         content: solutionInput,
-  //       }
-  //     ])
-  //   }, () => { this.props.history.push('/categories')});
-
-  //  //go to category route
-  // }
 
   handleDeleteSolution = solutionId => {
     this.setState({
@@ -139,15 +127,18 @@ class App extends Component {
 
     const contextValue = {
       categories: this.state.categories,
-      selectedCategory: this.state.selectedCategory,
-      setSelectedCategory: this.setSelectedCategory,
-      solutions: this.state.solutions,
-      users: this.state.users,
-      comments: this.state.comments,
-      addUser: this.addUser,
       addCategory: this.addCategory,
+      currentCategoryId: this.state.currentCategoryId,
+      setCurrentCategoryId: this.setCurrentCategoryId,
+      solutions: this.state.solutions,
+      addSolution: this.addSolution,
+      users: this.state.users,
+      addUser: this.addUser,
+      currentUserId: this.state.currentUserId,
+      setCurrentUser: this.setCurrentUser,
+      comments: this.state.comments,
       handleCommentSubmit: this.handleCommentSubmit,
-      handleSubmitNewSolution: this.handleSubmitNewSolution,
+      // handleSubmitNewSolution: this.handleSubmitNewSolution,
       deleteSolution: this.handleDeleteSolution
     }
     return (
@@ -164,7 +155,7 @@ class App extends Component {
             <Route path='/sign-up' component={AddUser}/>
             <Route path='/login' component={Login}/>
             <Route path='/categories' component={Category}/>
-            <Route path='/add-solutions' component={AddSolutions}/>
+            <Route path='/add-solutions/:categoryId' component={AddSolutions}/>
             {/* <Route path='/solutions' component={SolutionView}/> */}
             {/* Add in later version */}
             <Route path='/solutions/:solutionId' component={SolutionView}/>
