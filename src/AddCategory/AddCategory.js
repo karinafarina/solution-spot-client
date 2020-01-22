@@ -41,7 +41,6 @@ class AddCategory extends Component {
     }
     fetch(`${config.API_BASE_URL}/categories`, options)
       .then(res => {
-        console.log('res', res)
         if (!res.ok) {
           throw new Error('Something went wrong, please try again later');
         }

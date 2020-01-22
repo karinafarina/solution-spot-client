@@ -45,8 +45,6 @@ class AddSolutions extends Component {
       modified: new Date()
     }
      
-    console.log('solutionFields', newSolution)
-
     const options = {
       method: 'POST',
       body: JSON.stringify(newSolution),

@@ -7,6 +7,11 @@ import './FilteredSolutions.css';
 //CHANGE TO FILTEREDSOLUTIONS
 export  default class FilteredSolutions extends Component {
   static contextType = Context;
+
+  //state
+  //fetch
+  //setstate
+  //get rid of cat solution in app context
   render() {
     let outputDivs;
     let { solutions, currentCategoryId } = this.context;

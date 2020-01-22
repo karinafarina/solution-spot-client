@@ -8,7 +8,9 @@ import './Category.css';
 export default class Category extends Component {
   
   static contextType = Context;  
-  
+  //state = categorires
+  //fetch categories
+  //setstate catgores
   render() {
     const { categories, currentCategoryId, setCurrentCategoryId } = this.context;
     

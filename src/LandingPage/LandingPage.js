@@ -20,7 +20,7 @@ export default class LandingPage extends Component {
                 Choose from Categories of issues to post your solution ideas!
               </Link>
             </h3>
-          </header> : <h2>Sign Up or Login</h2>} 
+          </header> : ""} 
           
         </section>
 
