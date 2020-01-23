@@ -9,7 +9,7 @@ import AddSolutions from './AddSolutions/AddSolutions';
 import SolutionView from './SolutionView/SolutionView';
 import Context from './context';
 import './App.css';
-//import config from './config';
+import config from './config';
 
 /* eslint-disable no-restricted-globals */
 
@@ -19,38 +19,52 @@ class App extends Component {
     super(props) 
       this.state = {
         categories: [],
-        //
         currentCategoryId: 0,
         solutions: [],
         users: [],
-        currentUserId: 0,
-        comments: []
+        currentUserId: null,
       };
   }
+
+  componentDidMount() {
+    const options = {
+      method: 'GET',
+      headers: {
+        "Authorization": `Bearer ${config.API_KEY}`,
+        "Content-Type": "application/json"
+      }
+    };
+    Promise.all([
+      fetch(`${config.API_BASE_URL}/categories`, options),
+      fetch(`${config.API_BASE_URL}/solutions`, options),
+    ])
+      .then(([categoriesRes, solutionsRes]) => {
+        if (!categoriesRes.ok)
+          return categoriesRes.json().then(e => Promise.reject(e))
+        if (!solutionsRes.ok)
+          return solutionsRes.json().then(e => Promise.reject(e))
+
+        return Promise.all([
+          categoriesRes.json(),
+          solutionsRes.json(),
+        ])
+      })
+      .then(([categories, solutions]) => {
+        this.setState({ categories, solutions })
+      })
+    .catch(error => {
+      
+    })
+  };
 
   setCurrentCategoryId = (e) => {
     this.setState({ currentCategoryId: parseInt(e.target.value, 10) })
   };
 
   setCurrentUser = (currentUserId) => {
-    console.log('e', currentUserId)
+    console.log('currnet user id', currentUserId)
+    
     this.setState({ currentUserId })
-  }
-
-  handleCommentSubmit = (e, commentInput, solutionId) => {
-    e.preventDefault();
-    console.log('e, comentinput', e, commentInput)
-    this.setState({
-      comments: this.state.comments.concat([ 
-        {
-          id: "",
-          userId:"",
-          solutionId: solutionId,
-          content: commentInput,
-      }
-    ])
-      //  TODO: ADD NEW COMMENT TO CONTEXT, RANDOMLY GENERATE ID'S, USE ACTUAL SOLUTIONID AND USERID
-    })
   }
 
   handleDeleteSolution = solutionId => {
@@ -60,7 +74,6 @@ class App extends Component {
   };
 
   addUser = (newUser) => {
-    console.log('newUserApp', newUser)
     const users = [...this.state.users, newUser]
     this.setState({
       users
@@ -94,9 +107,6 @@ class App extends Component {
       addUser: this.addUser,
       currentUserId: this.state.currentUserId,
       setCurrentUser: this.setCurrentUser,
-      comments: this.state.comments,
-      handleCommentSubmit: this.handleCommentSubmit,
-      // handleSubmitNewSolution: this.handleSubmitNewSolution,
       deleteSolution: this.handleDeleteSolution
     }
     return (

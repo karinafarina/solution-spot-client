@@ -38,7 +38,6 @@ export default class Navigation extends Component {
   }
 
   render() {
-    console.log('rendered')
     return (
       <nav className="header">
         <h5 className="icon">

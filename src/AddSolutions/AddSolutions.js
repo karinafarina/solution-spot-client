@@ -16,13 +16,6 @@ class AddSolutions extends Component {
         value: '',
         touched: false
       },
-      // userId: {
-      //   value: this.context.currentUserId,
-      // },
-      // categoryId: {
-      //   value: 0,
-      // },
-
       contentError: null,
     };
   }
@@ -30,11 +23,6 @@ class AddSolutions extends Component {
   updateContent(content) {
     this.setState({ content: { value: content, touched: true } })
   };
-
- 
-  // updateUserId = e => {
-  //   this.setState({ userId: e.target.value })
-  // }
 
   handleAddSolution = e => {
     e.preventDefault();
@@ -44,7 +32,7 @@ class AddSolutions extends Component {
       categoryId: this.context.currentCategoryId,
       modified: new Date()
     }
-     
+    console.log('new solution', newSolution)
     const options = {
       method: 'POST',
       body: JSON.stringify(newSolution),
@@ -54,7 +42,6 @@ class AddSolutions extends Component {
     }
     fetch(`${config.API_BASE_URL}/solutions`, options)
       .then(res => {
-        console.log('res', res)
         if (!res.ok) {
           throw new Error('Something went wrong, please try again later');
         }
@@ -67,22 +54,23 @@ class AddSolutions extends Component {
       .catch(error => {
         console.log(error)
       })
-    // this.props.history.push('/')
+     this.props.history.push('/')
   
   }
 
+  handleDeleteSolution = () => {
+
+  }
+
   render() {
-    const currentCategoryId = this.context.currentCategoryId;
-    const currentUserId = this.context.currentUserId;
-    const currentCategory = this.context.categories.find(category => currentCategoryId === category.id);
-    console.log('currentcatid', currentCategoryId)
-    console.log('curentUser', currentUserId)
+    const { currentCategoryId, categories } = this.context;
+    const currentCategory = categories.find(category => currentCategoryId === category.id);
     return (
       <div className="solutions">
-        <h3>Post New Solutions</h3>
+        <h3>Post New Solution</h3>
         <div className="form-container">
           {/* replace category with the category that was selected in category page */}
-          <h4>{currentCategory.name}</h4>
+          <h4>{currentCategory.title}</h4>
           <form className="solutions-form" onSubmit={this.handleAddSolution}>
             <label htmlFor="Content">My Solution Content</label>
             <textarea id="content" name="content" cols="30" rows="10" onChange={e => this.updateContent(e.target.value)}></textarea>

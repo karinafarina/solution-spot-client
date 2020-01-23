@@ -24,6 +24,7 @@ class AddCategory extends Component {
   updateTitle(title) {
     this.setState({ title: { value: title, touched: true } })
   };
+  
 
   handleAddCategory = e => {
     e.preventDefault();

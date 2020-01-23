@@ -1,11 +1,16 @@
 .solution-view {
   max-width: 500px;
-  margin: 120px auto;
+  margin: 60px auto;
   padding: 0 30px;
+}
+
+.solution-view h3 {
+  margin-top: 0;
 }
 
 .solution-view h5 {
   text-align: left;
+  margin-bottom: 0;
 }
 
 .solution-view p {

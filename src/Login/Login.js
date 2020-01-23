@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import TokenService from '../services/token-service';
 import AuthApiService from '../services/auth-api-service'
-//import Context from '../context';
+import Context from '../context';
 // import config from '../config';
 import './Login.css';
 
 export default class Login extends Component {
 
+  static contextType = Context;  
+
   state = { error: null }
-  // updateEmail(email) {
-  //   console.log('emeail', email)
-  //   this.setState({ email: { value: email, touched: true } })
-  // };
-  // updateUserPassword(userPassword) {
-  //   this.setState({ userPassword: { value: userPassword, touched: true } })
-  // };
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault()
@@ -26,8 +21,10 @@ export default class Login extends Component {
       userPassword: userPassword.value,
     })
       .then(res => {
-        console.log('here')
+        console.log('here', res)
 
+        this.context.setCurrentUser(res.userId)
+        //send back userId CALL SETCURRENTUSER(ID) NEED ID FROM BACKEND
         email.value = ''
         userPassword.value = ''
         TokenService.saveAuthToken(res.authToken)

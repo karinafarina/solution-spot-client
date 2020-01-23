@@ -14,7 +14,7 @@ export default class LandingPage extends Component {
           <h3>A place where solution oriented people can share and discuss their ideas!</h3>
         </header>
         <section>
-          {this.context.currentUserId !== 0 ? <header>
+          {this.context.currentUserId ? <header>
             <h3>
               <Link to='/categories'>
                 Choose from Categories of issues to post your solution ideas!

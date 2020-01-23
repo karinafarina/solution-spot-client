@@ -8,12 +8,9 @@ import './Category.css';
 export default class Category extends Component {
   
   static contextType = Context;  
-  //state = categorires
-  //fetch categories
-  //setstate catgores
+  
   render() {
     const { categories, currentCategoryId, setCurrentCategoryId } = this.context;
-    
     const currentCategory = categories.find(category => category.id === currentCategoryId);
     return (
       <div className="category-container">
@@ -34,7 +31,7 @@ export default class Category extends Component {
         <div className="solutions">
           {currentCategory ? <h4>Solutions for {currentCategory.title}</h4> : <h4>All Solutions</h4>}
           
-            <FilteredSolutions/>
+            <FilteredSolutions />
           
           {currentCategoryId ? <Link to={`./add-solutions/${currentCategoryId}`}><h4>Add Your Solution</h4></Link> : ""}
            
