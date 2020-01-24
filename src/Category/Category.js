@@ -33,7 +33,7 @@ export default class Category extends Component {
           
             <FilteredSolutions />
           
-          {currentCategoryId ? <Link to={`./add-solutions/${currentCategoryId}`}><h4>Add Your Solution</h4></Link> : ""}
+          {currentCategoryId ? <Link to={`/add-solutions/${currentCategoryId}`}><h4>Add Your Solution</h4></Link> : ""}
            
         </div>
       </div>

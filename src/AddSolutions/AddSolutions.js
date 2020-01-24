@@ -8,6 +8,7 @@ import './AddSolutions.css';
 class AddSolutions extends Component {
   
   static contextType = Context;
+  
   constructor(props) {
     super(props)
     //HOW DO I GET userId, categoryId of this new solution
@@ -49,12 +50,11 @@ class AddSolutions extends Component {
       })
       .then((newSolution) => {
         this.context.addSolution(newSolution);
-        this.props.history.push(`/categories/${newSolution.categoryId}`)
       })
       .catch(error => {
         console.log(error)
       })
-     this.props.history.push('/')
+    //  this.props.history.push('/')
   
   }
 

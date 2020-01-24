@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 
 export default class LandingPage extends Component {
 
-    static contextType = Context;  
+  static contextType = Context;  
 
+  state = {
+    currentUserId: null
+  }
   render() {
     return (
       <div>
@@ -14,7 +17,8 @@ export default class LandingPage extends Component {
           <h3>A place where solution oriented people can share and discuss their ideas!</h3>
         </header>
         <section>
-          {this.context.currentUserId ? <header>
+          {console.log('this.state.user', this.state.currentUserId)}
+          {this.state.currentUserId ? <header>
             <h3>
               <Link to='/categories'>
                 Choose from Categories of issues to post your solution ideas!

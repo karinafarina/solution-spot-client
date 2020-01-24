@@ -4,8 +4,9 @@ import TokenService from '../services/token-service'
 import './Navigation.css';
 
 export default class Navigation extends Component {
+
   handleLogoutClick = () => {
-    TokenService.clearAuthToken()
+    TokenService.clearAuthToken();
   }
 
   renderLogoutLink() {

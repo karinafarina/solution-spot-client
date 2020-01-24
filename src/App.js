@@ -92,6 +92,7 @@ class App extends Component {
     this.setState({
       solutions
     })
+    this.props.history.push(`/categories/${newSolution.categoryId}`)
   }
 
   render() {

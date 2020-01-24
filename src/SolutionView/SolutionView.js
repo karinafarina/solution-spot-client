@@ -10,8 +10,56 @@ class SolutionView extends Component  {
   
   state = {
     commentsForSolution: [],
+    comments: [],
+    content: {
+      value: '',
+      touched: false
+    },
+    currentCategory: {},
+    currentSolution: [],
     textAreaValue: "",
   };
+
+  updateContent(content) {
+    this.setState({ content: { value: content, touched: true } })
+  };
+
+  handleCommentSubmit = e => {
+    e.preventDefault();
+    const newComment = {
+      content: this.state.textAreaValue,
+      userId: this.context.currentUserId,
+      solutionId: this.props.match.params.solutionId,
+    }
+    console.log('new comment', newComment)
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(newComment),
+      headers: {
+        "authorization": `Bearer ${config.TOKEN_KEY}`,
+        "content-type": "application/json"
+      }
+    }
+    fetch(`${config.API_BASE_URL}/comments`, options)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Something went wrong, please try again later');
+        }
+        return res.json();
+      })
+      .then((newComment) => {
+        const commentsForSolution = [...this.state.commentsForSolution, newComment];
+        this.setState({
+          commentsForSolution
+        })
+        console.log('this.prps', this.props.history)
+        this.props.history.push(`/solutions/${this.state.currentCategory.id}`)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    //this.props.history.push('/')
+  }
 
   handleCommentInput = (e) => {
     // this.state.textAreaValue.value = "";
@@ -46,28 +94,13 @@ class SolutionView extends Component  {
       })
   }
 
-  handleCommentSubmit = (e, commentInput, solutionId) => {
-    e.preventDefault();
-    this.setState({
-      comments: this.state.comments.concat([
-        {
-          id: "",
-          userId: "",
-          solutionId: solutionId,
-          content: commentInput,
-        }
-      ])
-      //  TODO: ADD NEW COMMENT TO CONTEXT, RANDOMLY GENERATE ID'S, USE ACTUAL SOLUTIONID AND USERID
-    })
-  }
-
-
   componentDidMount() {
     const solutionId = this.props.match.params.solutionId;
     fetch(`${config.API_BASE_URL}/solutions/${solutionId}/comments`, {
       method: 'GET',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        "authorization": `Bearer ${config.TOKEN_KEY}`,
       }
     })
       .then(res => {
@@ -85,26 +118,38 @@ class SolutionView extends Component  {
         this.setState({
           commentsForSolution
         })
+        this.setCurrentSolution();
+        this.setCurrentCategory();
       })
       .catch(error => {
         console.error(error)
       });
   }
 
-  render() {
-    const { commentsForSolution } = this.state;
-    console.log('comments', commentsForSolution)
-    let solutionId = parseInt(this.props.match.params.solutionId);
-    let solution = this.context.solutions.filter(solution => solutionId === solution.id);
-    //let commentsForThisSolution = commentsForSolution.filter(comment => comment.solutionId === solutionId);
+  setCurrentCategory = () => {
     const { categories, currentCategoryId } = this.context;
     const currentCategory = categories.find(category => category.id === currentCategoryId);
-    //console.log('coomesolutio', commentsForSolution)
+    this.setState({
+      currentCategory
+    })
+  }
+
+  setCurrentSolution = () => {
+    let solutionId = parseInt(this.props.match.params.solutionId);
+    let currentSolution = this.context.solutions.filter(solution => solutionId === solution.id);
+    this.setState({
+      currentSolution: currentSolution[0]
+    })
+  }
+
+  render() {
+    const { commentsForSolution, currentSolution, currentCategory } = this.state;
+    // console.log('currentsolution', currentSolution.content)
     return (
       <div className="solution-view">
         <Link to="/categories"><h5>Go back</h5></Link>
-        <h3>{currentCategory.title}</h3>
-        <p>{solution[0].content}</p>
+        <h3>{currentCategory ? currentCategory.title : ""}</h3>
+        <p>{currentSolution.content}</p>
         <button
           className='solution-delete'
           type='button'
@@ -117,7 +162,7 @@ class SolutionView extends Component  {
         {/* // TODO: CREATE A FUNCTIONAL COMPONENT FOR RENDERING AND STYLING COMMENTS */}
         <Comments commentsForSolution={commentsForSolution}/>
         
-        <form className="new-comments" onSubmit={e => this.context.handleCommentSubmit(e, this.state.textAreaValue, solutionId)}>
+        <form className="new-comments" onSubmit={this.handleCommentSubmit}>
           <label htmlFor="new-comment" id="new-comment">Comment</label>
           <textarea name="new-comment" id="new-comment" cols="50" rows="12" onChange={e => this.handleCommentInput(e)}></textarea>
           <input type="submit"/>
