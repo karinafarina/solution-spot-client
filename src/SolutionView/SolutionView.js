@@ -67,7 +67,7 @@ class SolutionView extends Component  {
     e.preventDefault()
     const solutionId = this.props.match.params.solutionId;
 
-    fetch(`http://localhost:8000/api/solutions/${solutionId}`, {
+    fetch(`${config.API_BASE_URL}/solutions/${solutionId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
