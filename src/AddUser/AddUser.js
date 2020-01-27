@@ -46,7 +46,7 @@ export default class AddUser extends Component {
           
           <div>
             <label htmlFor="userPassword">Password</label>
-            <input type="userPassword" name='userPassword' id='userPassword' />
+            <input type="text" name='userPassword' id='userPassword' />
             {/* {this.state.userPassword.touched && (
               <ValidationError message={userPasswordError} />
             )} */}

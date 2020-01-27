@@ -3,9 +3,9 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: Ro, sans-serif;
   font-size: 20px;
-  color: #444;
+  color: #0a2717;
   text-align: center;
   line-height: 1.5;;
 }
@@ -16,20 +16,22 @@ ul {
 }
 a {
   text-decoration: none;
+  color: #010e06
 }
 
 header {
-  padding: 60px 15px;
+  padding: 60px 40px;
+  margin-top: 80px;
 }
 
 section {
   min-height: 200px;
   padding: 30px 15px;
-  background-color: #bbb;
+  background-color: #102910;
 }
 
 section:nth-child(even) {
-  background-color: #ddd;
+  background-color: #e9f6ef;
 }
 
 p {
@@ -41,13 +43,10 @@ textarea {
   vertical-align: top;
 }
 
-
-
 /* Style inputs */
   input[type=text], select, textarea {
   /* width: 30%; */
-  padding: 12px 20px;
-  margin: 8px 0;
+  margin: 8px ;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;

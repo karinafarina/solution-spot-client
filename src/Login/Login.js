@@ -49,7 +49,7 @@ export default class Login extends Component {
             <div>
               <label htmlFor="userPassword">Password</label>
               <input
-                type="password"
+                type="text"
                 name='userPassword'
                 id='userPassword'
               // onChange={e => this.updateUserPassword(e.target.value)}

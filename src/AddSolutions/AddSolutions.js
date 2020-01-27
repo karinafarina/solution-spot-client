@@ -71,7 +71,7 @@ class AddSolutions extends Component {
           {/* replace category with the category that was selected in category page */}
           <h4>{currentCategory.title}</h4>
           <form className="solutions-form" onSubmit={this.handleAddSolution}>
-            <label htmlFor="Content">My Solution Content</label>
+            <label htmlFor="Content">My Solution</label>
             <textarea id="content" name="content" cols="30" rows="10" onChange={e => this.updateContent(e.target.value)}></textarea>
             {/* {this.state.content.touched && (
               <ValidationError message={contentError} />

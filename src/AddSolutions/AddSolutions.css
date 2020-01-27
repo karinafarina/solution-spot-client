@@ -1,6 +1,6 @@
 .solutions {
   max-width: 500px;
-  margin: 20px auto 120px;
+  margin: 100px auto 120px;
 }
 
 form.solutions-form {
@@ -9,7 +9,7 @@ form.solutions-form {
   margin-top: 30px;
 }
 
-textarea#my-solution {
+textarea#content {
   width: 80%;
   margin: 20px auto;
 }
