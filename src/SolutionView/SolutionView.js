@@ -20,10 +20,6 @@ class SolutionView extends Component  {
     textAreaValue: "",
   };
 
-  updateContent(content) {
-    this.setState({ content: { value: content, touched: true } })
-  };
-
   handleCommentSubmit = e => {
     e.preventDefault();
     const newComment = {
@@ -49,13 +45,15 @@ class SolutionView extends Component  {
       .then((newComment) => {
         const commentsForSolution = [...this.state.commentsForSolution, newComment];
         this.setState({
-          commentsForSolution
+          commentsForSolution,
+          textAreaValue: "",
         })
-        this.props.history.push(`/solutions/${this.state.currentCategory.id}`)
+        console.log('texval', this.state.textAreaValue)
       })
       .catch(error => {
         console.log(error)
       })
+    //this.props.history.push('/')
   }
 
   handleCommentInput = (e) => {
@@ -67,7 +65,7 @@ class SolutionView extends Component  {
     e.preventDefault()
     const solutionId = this.props.match.params.solutionId;
 
-    fetch(`${config.API_BASE_URL}/solutions/${solutionId}`, {
+    fetch(`http://localhost:8000/api/solutions/${solutionId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -159,9 +157,8 @@ class SolutionView extends Component  {
         
         <form className="new-comments" onSubmit={this.handleCommentSubmit}>
           <label htmlFor="new-comment" id="new-comment">Comment</label>
-          <textarea name="new-comment" id="new-comment" cols="50" rows="12" onChange={e => this.handleCommentInput(e)}></textarea>
+          <textarea name="new-comment" id="new-comment" cols="50" rows="12" val={this.state.textAreaValue} onChange={e => this.handleCommentInput(e)}></textarea>
           <input type="submit"/>
-          {/* After submitting, comment will be added to database  */}
         </form>
       </div>
     )
