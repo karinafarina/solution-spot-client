@@ -20,6 +20,42 @@ class SolutionView extends Component  {
     textAreaValue: "",
   };
 
+  componentDidMount() {
+    const solutionId = this.props.match.params.solutionId;
+    fetch(`${config.API_BASE_URL}/solutions/${solutionId}/comments`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        "authorization": `Bearer ${config.TOKEN_KEY}`,
+      }
+    })
+      .then(res => {
+        if (!res.ok) {
+          // get the error message from the response,
+          return res.json().then(error => {
+            // then throw it
+            throw error
+          })
+        }
+        return res.json()
+      })
+      .then(commentsForSolution => {
+        this.setState({
+          commentsForSolution
+        })
+        this.setCurrentSolution();
+        this.setCurrentCategory();
+      })
+      .catch(error => {
+        console.error(error)
+      });
+  }
+
+  handleCommentInput = (e) => {
+    // this.state.textAreaValue.value = "";
+    this.setState({ textAreaValue: e.target.value })
+  }
+  
   handleCommentSubmit = e => {
     e.preventDefault();
     const newComment = {
@@ -56,69 +92,33 @@ class SolutionView extends Component  {
     //this.props.history.push('/')
   }
 
-  handleCommentInput = (e) => {
-    // this.state.textAreaValue.value = "";
-    this.setState({ textAreaValue: e.target.value })
-  }
-
   handleClickDelete = e => {
     e.preventDefault()
     const solutionId = this.props.match.params.solutionId;
 
-    fetch(`http://localhost:8000/api/solutions/${solutionId}`, {
+    fetch(`${config.API_BASE_URL}/solutions/${solutionId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
       },
     })
-      .then(res => {
-        if (!res.ok) {
-          // get the error message from the response,
-          return res.json().then(error => {
-            // then throw it
-            throw error
-          })
+      .then(async res => {
+        console.log('res', res.body)
+        if (res.ok) {
+          return res.json();
         }
-        return res.json()
+        const error = await res.json();
+        throw error;
       })
       .then(() => {
-        this.context.deleteNote(solutionId)
+        this.context.deleteSolution(solutionId)
       })
       .catch(error => {
         console.error(error)
       })
   }
 
-  componentDidMount() {
-    const solutionId = this.props.match.params.solutionId;
-    fetch(`${config.API_BASE_URL}/solutions/${solutionId}/comments`, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-        "authorization": `Bearer ${config.TOKEN_KEY}`,
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          // get the error message from the response,
-          return res.json().then(error => {
-            // then throw it
-            throw error
-          })
-        }
-        return res.json()
-      })
-      .then(commentsForSolution => {
-        this.setState({
-          commentsForSolution
-        })
-        this.setCurrentSolution();
-        this.setCurrentCategory();
-      })
-      .catch(error => {
-        console.error(error)
-      });
-  }
+ 
 
   setCurrentCategory = () => {
     const { categories, currentCategoryId } = this.context;
@@ -157,7 +157,7 @@ class SolutionView extends Component  {
         
         <form className="new-comments" onSubmit={this.handleCommentSubmit}>
           <label htmlFor="new-comment" id="new-comment">Comment</label>
-          <textarea name="new-comment" id="new-comment" cols="50" rows="12" val={this.state.textAreaValue} onChange={e => this.handleCommentInput(e)}></textarea>
+          <textarea name="new-comment" id="new-comment" cols="50" rows="12" value={this.state.textAreaValue} onChange={e => this.handleCommentInput(e)}></textarea>
           <input type="submit"/>
         </form>
       </div>

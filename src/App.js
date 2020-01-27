@@ -65,11 +65,12 @@ class App extends Component {
     this.setState({ currentUserId })
   }
 
-  handleDeleteSolution = solutionId => {
+  deleteSolution = solutionId => {
     this.setState({
       solutions: this.state.solutions.filter(solution => solution.id !== solutionId)
     })
   };
+ 
 
   addUser = (newUser) => {
     const users = [...this.state.users, newUser]
@@ -106,7 +107,7 @@ class App extends Component {
       addUser: this.addUser,
       currentUserId: this.state.currentUserId,
       setCurrentUser: this.setCurrentUser,
-      deleteSolution: this.handleDeleteSolution
+      deleteSolution: this.deleteSolution
     }
     return (
       <Context.Provider value={contextValue}>
