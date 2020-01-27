@@ -21,7 +21,6 @@ export default class Login extends Component {
       userPassword: userPassword.value,
     })
       .then(res => {
-        console.log('here', res)
         this.context.setCurrentUser(res.userId)
         email.value = ''
         userPassword.value = ''

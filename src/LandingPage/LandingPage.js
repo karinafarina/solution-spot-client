@@ -17,7 +17,6 @@ export default class LandingPage extends Component {
           <h3>A place where solution oriented people can share and discuss their ideas!</h3>
         </header>
         <section>
-          {console.log('this.state.user', this.state.currentUserId)}
           {this.state.currentUserId ? <header>
             <h3>
               <Link to='/categories'>

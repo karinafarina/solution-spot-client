@@ -61,9 +61,7 @@ class App extends Component {
     this.setState({ currentCategoryId: parseInt(e.target.value, 10) })
   };
 
-  setCurrentUser = (currentUserId) => {
-    console.log('currnet user id', currentUserId)
-    
+  setCurrentUser = (currentUserId) => {    
     this.setState({ currentUserId })
   }
 

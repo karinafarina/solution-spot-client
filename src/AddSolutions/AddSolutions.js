@@ -33,7 +33,6 @@ class AddSolutions extends Component {
       categoryId: this.context.currentCategoryId,
       modified: new Date()
     }
-    console.log('new solution', newSolution)
     const options = {
       method: 'POST',
       body: JSON.stringify(newSolution),

@@ -31,7 +31,6 @@ class SolutionView extends Component  {
       userId: this.context.currentUserId,
       solutionId: this.props.match.params.solutionId,
     }
-    console.log('new comment', newComment)
     const options = {
       method: 'POST',
       body: JSON.stringify(newComment),
@@ -52,13 +51,11 @@ class SolutionView extends Component  {
         this.setState({
           commentsForSolution
         })
-        console.log('this.prps', this.props.history)
         this.props.history.push(`/solutions/${this.state.currentCategory.id}`)
       })
       .catch(error => {
         console.log(error)
       })
-    //this.props.history.push('/')
   }
 
   handleCommentInput = (e) => {
@@ -114,7 +111,6 @@ class SolutionView extends Component  {
         return res.json()
       })
       .then(commentsForSolution => {
-        console.log('comments', commentsForSolution)
         this.setState({
           commentsForSolution
         })
@@ -144,7 +140,6 @@ class SolutionView extends Component  {
 
   render() {
     const { commentsForSolution, currentSolution, currentCategory } = this.state;
-    // console.log('currentsolution', currentSolution.content)
     return (
       <div className="solution-view">
         <Link to="/categories"><h5>Go back</h5></Link>

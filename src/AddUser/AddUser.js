@@ -21,7 +21,6 @@ export default class AddUser extends Component {
       userPassword: userPassword.value
     })
       .then(user => {
-        console.log('user', user)
         email.value = ''
         userPassword.value = ''
         this.props.history.push('/login')
