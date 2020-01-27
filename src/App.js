@@ -30,7 +30,7 @@ class App extends Component {
     const options = {
       method: 'GET',
       headers: {
-        "Authorization": `Bearer ${config.API_KEY}`,
+        "Authorization": `Bearer ${config.TOKEN_KEY}`,
         "Content-Type": "application/json"
       }
     };
