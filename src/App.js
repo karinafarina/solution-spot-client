@@ -10,6 +10,7 @@ import SolutionView from './SolutionView/SolutionView';
 import Context from './context';
 import './App.css';
 import config from './config';
+import TokenService from './services/token-service';
 
 /* eslint-disable no-restricted-globals */
 
@@ -27,6 +28,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if(TokenService.hasAuthToken) {
+      this.setCurrentUser();
+    }
     const options = {
       method: 'GET',
       headers: {
@@ -61,7 +65,7 @@ class App extends Component {
     this.setState({ currentCategoryId: parseInt(e.target.value, 10) })
   };
 
-  setCurrentUser = (currentUserId) => {    
+  setCurrentUser = (currentUserId) => {
     this.setState({ currentUserId })
   }
 

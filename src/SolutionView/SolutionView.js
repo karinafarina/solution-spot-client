@@ -103,7 +103,7 @@ class SolutionView extends Component  {
       },
     })
       .then(async res => {
-        console.log('res', res.body)
+        console.log('res', res)
         if (res.ok) {
           return res.json();
         }
@@ -112,6 +112,7 @@ class SolutionView extends Component  {
       })
       .then(() => {
         this.context.deleteSolution(solutionId)
+        this.props.history.push('/categories')
       })
       .catch(error => {
         console.error(error)
@@ -146,10 +147,8 @@ class SolutionView extends Component  {
         <button
           className='solution-delete'
           type='button'
-          onClick={this.handleClickDelete}
-        >
-          <Link to="/categories">Delete</Link>
-
+          onClick={this.handleClickDelete}>
+          Delete
         </button>
         
         {/* // TODO: CREATE A FUNCTIONAL COMPONENT FOR RENDERING AND STYLING COMMENTS */}
