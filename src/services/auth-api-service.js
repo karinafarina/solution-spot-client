@@ -9,7 +9,8 @@ const AuthApiService = {
       },
       body: JSON.stringify(credentials),
     })
-      .then(console.log('testcooltrick') || (res => (res.ok)
+      .then(console.log('testcooltrick') || (res => 
+        (res.ok)
            ? res.json()
           : res.json().then(e => Promise.reject(e))
         ))

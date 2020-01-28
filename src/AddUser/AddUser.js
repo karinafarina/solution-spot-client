@@ -7,24 +7,30 @@ import './AddUser.css';
 
 export default class AddUser extends Component {
 
-  state = { error: null }
+  state = { 
+    error: null 
+  }
     
 
   handleAddUser = e => {
     e.preventDefault();
     //get form fields from event
-    const { email, userPassword } = e.target;
-
-    this.setState({ error: null })
-    AuthApiService.postUser({
-      email: email.value,
-      userPassword: userPassword.value
-    })
-      .then(user => {
-        email.value = ''
-        userPassword.value = ''
-        this.props.history.push('/login')
+    const { email, userPassword, confirmPassword } = e.target;
+    console.log('pss', userPassword.value, confirmPassword.value)
+    if(userPassword.value === confirmPassword.value) {
+      this.setState({ error: null })
+      AuthApiService.postUser({
+        email: email.value,
+        userPassword: userPassword.value,
       })
+        .then(user => {
+          email.value = ''
+          userPassword.value = ''
+          this.props.history.push('/login')
+        })
+    } else {
+      alert("Passwords do not match");
+    }
   }
 
   render() {
@@ -38,7 +44,7 @@ export default class AddUser extends Component {
         <form className='signup-form' onSubmit={this.handleAddUser}>
           <div>
             <label htmlFor="email">Email</label>
-            <input type="text" name='email' id='email' />
+            <input type="email" name='email' id='email' required />
             {/* {this.state.email.touched && (
               <ValidationError message={emailError} />
             )} */}
@@ -46,7 +52,14 @@ export default class AddUser extends Component {
           
           <div>
             <label htmlFor="userPassword">Password</label>
-            <input type="text" name='userPassword' id='userPassword' />
+            <input type="password" name='userPassword' id='userPassword' required />
+            {/* {this.state.userPassword.touched && (
+              <ValidationError message={userPasswordError} />
+            )} */}
+          </div>
+          <div>
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input type="password" name='confirmPassword' id='confirmPassword' required />
             {/* {this.state.userPassword.touched && (
               <ValidationError message={userPasswordError} />
             )} */}

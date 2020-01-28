@@ -32,6 +32,7 @@ export default class Login extends Component {
       })
     }
     render() {
+      const { error } = this.state;
       return (
         <div className="login">
           <h2>Log In</h2>
