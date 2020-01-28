@@ -37,6 +37,10 @@ export default class Login extends Component {
         <div className="login">
           <h2>Log In</h2>
           <form className="login-form" onSubmit={this.handleSubmitJwtAuth}>
+            <div role='alert'>
+              {error && <p className='red'>{error}</p>}
+            </div>
+            
             <div>
               <label htmlFor="email">Email</label>
               <input
@@ -44,6 +48,7 @@ export default class Login extends Component {
                 type="text"
                 name='email'
                 id='email'
+                required
               // onChange={e => this.updateEmail(e.target.value)}
               />
             </div>
@@ -53,6 +58,7 @@ export default class Login extends Component {
                 type="text"
                 name='userPassword'
                 id='userPassword'
+                required
               // onChange={e => this.updateUserPassword(e.target.value)}
               />
             </div>

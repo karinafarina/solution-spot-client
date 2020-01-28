@@ -28,7 +28,7 @@ export default class Category extends Component {
         </form>
         <AddCategory/>
         
-        <div className="solutions">
+        <div className="filtered-solutions">
           {currentCategory ? <h4>Solutions for {currentCategory.title}</h4> : <h4>All Solutions</h4>}
           
             <FilteredSolutions />

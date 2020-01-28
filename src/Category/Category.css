@@ -4,6 +4,11 @@
   margin-bottom: 0;
 }
 
+.category-container {
+  padding: 20px;
+  margin-top: 60px;
+}
+
 form.categories {
   display: flex;
   flex-direction: column;
@@ -17,4 +22,8 @@ form.categories input {
   border: 1px solid black;
   padding: 5px;
   width: 25%;
+}
+
+.filtered-solutions {
+  margin-top: 0;
 }

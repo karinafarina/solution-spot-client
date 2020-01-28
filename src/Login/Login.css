@@ -20,3 +20,7 @@ button {
   width: 30%;
   display: block;
 }
+
+.red {
+  color: red;
+}

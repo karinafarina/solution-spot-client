@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import Context from '../context';
 import config from '../config';
 // import ValidationError from '../ValidationError';
@@ -52,9 +52,7 @@ class AddSolutions extends Component {
       })
       .catch(error => {
         console.log(error)
-      })
-    //  this.props.history.push('/')
-  
+      })  
   }
 
   handleDeleteSolution = () => {
@@ -65,7 +63,8 @@ class AddSolutions extends Component {
     const { currentCategoryId, categories } = this.context;
     const currentCategory = categories.find(category => currentCategoryId === category.id);
     return (
-      <div className="solutions">
+      <div className="add-solutions">
+        <button className="go-back" type="button"><Link to="/categories">Go Back</Link></button>
         <h3>Post New Solution</h3>
         <div className="form-container">
           {/* replace category with the category that was selected in category page */}
