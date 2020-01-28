@@ -11,7 +11,7 @@ export default class Navigation extends Component {
 
   renderLogoutLink() {
     return (
-      <div className='Header__logged-in'>
+      <div className="logged-in">
         <Link
           onClick={this.handleLogoutClick}
           to='/'>
@@ -23,7 +23,7 @@ export default class Navigation extends Component {
 
   renderLoginLink() {
     return (
-      <div className='Header__not-logged-in'>
+      <div classname="logged-out">
         <h5>
           <Link
             to='/sign-up'>

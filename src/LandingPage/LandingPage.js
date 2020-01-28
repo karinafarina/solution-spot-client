@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import Context from '../context';
 import { Link } from 'react-router-dom';
+import './LandingPage.css'
 
 export default class LandingPage extends Component {
 
   static contextType = Context;  
 
-  state = {
-    currentUserId: null
-  }
+  // state = {
+  //   currentUserId: null
+  // }
   render() {
+    const { currentUserId } = this.context;
+    console.log('curenuserid', currentUserId)
     return (
-      <div>
-        <header role="banner">
-          <h1>Solution Spot</h1>
+      <div className="landing">
+        <h1>Solution Spot</h1>
+        <section className="banner" role="banner">
           <h3>A place where solution oriented people can share and discuss their ideas!</h3>
-        </header>
+        </section>
         <section>
-          {this.state.currentUserId ? <header>
+          {currentUserId ? <header>
             <h3>
               <Link to='/categories'>
                 Choose from Categories of issues to post your solution ideas!

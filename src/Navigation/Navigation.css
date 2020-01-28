@@ -1,6 +1,6 @@
-nav, footer {
+nav {
   padding: 1%, 0;
-  background-color: #e9f6ef;
+  background-color: #102910;
 }
 
 nav.header{
@@ -12,11 +12,16 @@ nav.header{
   display: flex;
   justify-content: space-between;
   padding: 0 15px;
+  color: #fff;
+
 }
 
 .nav-group {
   display: flex;
-  
+}
+
+.logged-in {
+  vertical-align: middle;
 }
 
 a {

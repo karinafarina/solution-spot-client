@@ -45,21 +45,18 @@ export default class Login extends Component {
               <label htmlFor="email">Email</label>
               <input
                 required
-                type="text"
+                type="email"
                 name='email'
                 id='email'
-                required
-              // onChange={e => this.updateEmail(e.target.value)}
               />
             </div>
             <div>
               <label htmlFor="userPassword">Password</label>
               <input
-                type="text"
+                type="password"
                 name='userPassword'
                 id='userPassword'
                 required
-              // onChange={e => this.updateUserPassword(e.target.value)}
               />
             </div>
             <button type='submit'>Log In</button>
