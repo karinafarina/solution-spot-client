@@ -67,8 +67,8 @@ class AddSolutions extends Component {
         <button className="go-back" type="button"><Link to="/categories">Go Back</Link></button>
         <h3>Post New Solution</h3>
         <div className="form-container">
-          {/* replace category with the category that was selected in category page */}
-          <h4>{currentCategory.title}</h4>
+          {currentCategory ? <h4>{currentCategory.title}</h4> : ""}
+          
           <form className="solutions-form" onSubmit={this.handleAddSolution}>
             <label htmlFor="Content">My Solution</label>
             <textarea id="content" name="content" cols="30" rows="10" onChange={e => this.updateContent(e.target.value)}></textarea>

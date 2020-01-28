@@ -7,11 +7,11 @@ export class Comments extends Component {
 
 
   render() {
-    
+    const { commentsForSolution } = this.props;
     return (
       <div className="comments">
         <h4>Comments</h4>
-        {this.props.commentsForSolution.map((comment, index) => <p key={index}>{comment.content}</p>)}
+        {commentsForSolution ? commentsForSolution.map((comment, index) => <p key={index}>{comment.content}</p>) : ""}
       </div>
     )
   }
