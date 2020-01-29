@@ -53,7 +53,12 @@ export default class LandingPage extends Component {
             <h3>See ratings and comments on your solutions, start a conversation!</h3>
           </header>
         </section> */}
-        <footer>Footer</footer>
+        <footer>
+          <div className="footer-content">
+            <div className="name">Karina Gaulin</div>
+            <div className="copy">&copy; 2020</div>
+          </div>
+        </footer>
       </div>
     )
   }

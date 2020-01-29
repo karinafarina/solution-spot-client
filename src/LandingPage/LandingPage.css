@@ -1,3 +1,17 @@
 .landing {
   margin-top: 100px;
+  height: 100vh;
+}
+
+footer {
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content {
+  justify-content: space-between;
+  width: 100%;
 }

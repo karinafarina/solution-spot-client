@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Context from '../context';
 import Comments from '../Comments/Comments';
 import config from '../config';
+import '../services/token-service';
 import './SolutionView.css';
 
 class SolutionView extends Component  {
@@ -26,7 +27,7 @@ class SolutionView extends Component  {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        "authorization": `Bearer ${config.TOKEN_KEY}`,
+        "authorization": `Bearer ${window.localStorage.getItem("token")}`,
       }
     })
       .then(res => {
@@ -51,8 +52,23 @@ class SolutionView extends Component  {
       });
   }
 
+  setCurrentCategory = () => {
+    const { categories, currentCategoryId } = this.context;
+    const currentCategory = categories.find(category => category.id === currentCategoryId);
+    this.setState({
+      currentCategory
+    })
+  }
+
+  setCurrentSolution = () => {
+    let solutionId = parseInt(this.props.match.params.solutionId);
+    let currentSolution = this.context.solutions.filter(solution => solutionId === solution.id);
+    this.setState({
+      currentSolution: currentSolution[0]
+    })
+  }
+
   handleCommentInput = (e) => {
-    // this.state.textAreaValue.value = "";
     this.setState({ textAreaValue: e.target.value })
   }
   
@@ -67,7 +83,7 @@ class SolutionView extends Component  {
       method: 'POST',
       body: JSON.stringify(newComment),
       headers: {
-        "authorization": `Bearer ${config.TOKEN_KEY}`,
+        "authorization": `Bearer ${window.localStorage.getItem("token")}`,
         "content-type": "application/json"
       }
     }
@@ -99,15 +115,16 @@ class SolutionView extends Component  {
     fetch(`${config.API_BASE_URL}/solutions/${solutionId}`, {
       method: 'DELETE',
       headers: {
+        "authorization": `Bearer ${window.localStorage.getItem("token")}`,
         'content-type': 'application/json'
       },
     })
-      .then(async res => {
+      .then(res => {
         console.log('res', res)
         if (res.ok) {
           return res.json();
         }
-        const error = await res.json();
+        const error = res.json();
         throw error;
       })
       .then(() => {
@@ -117,24 +134,6 @@ class SolutionView extends Component  {
       .catch(error => {
         console.error(error)
       })
-  }
-
- 
-
-  setCurrentCategory = () => {
-    const { categories, currentCategoryId } = this.context;
-    const currentCategory = categories.find(category => category.id === currentCategoryId);
-    this.setState({
-      currentCategory
-    })
-  }
-
-  setCurrentSolution = () => {
-    let solutionId = parseInt(this.props.match.params.solutionId);
-    let currentSolution = this.context.solutions.filter(solution => solutionId === solution.id);
-    this.setState({
-      currentSolution: currentSolution[0]
-    })
   }
 
   render() {

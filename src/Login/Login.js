@@ -21,7 +21,10 @@ export default class Login extends Component {
       userPassword: userPassword.value,
     })
       .then(res => {
-        this.context.setCurrentUser(res.userId)
+        this.context.setCurrentUser(res.userId);
+        localStorage.setItem('myId', res.userId);
+        
+        //also put userId into local storage
         email.value = ''
         userPassword.value = ''
         TokenService.saveAuthToken(res.authToken)

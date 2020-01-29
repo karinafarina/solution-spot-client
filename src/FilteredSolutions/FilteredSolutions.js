@@ -11,8 +11,6 @@ export  default class FilteredSolutions extends Component {
   render() {
     let outputDivs;
     let { solutions, currentCategoryId } = this.context;
-    console.log('solutions', solutions)
-    
     const filteredSolutions = solutions.filter(solution => solution.categoryId === parseInt(currentCategoryId));
     const solutionsToUse = currentCategoryId ? filteredSolutions : solutions;
 
