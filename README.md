@@ -11,3 +11,7 @@ Solution Spot is a place where solution oriented people can come to share ideas 
 
 Technology used:
 React.js, React context, Express, Node, Postgresql.
+
+Demo user account:
+email: dogooder@gmail.com
+password: happy
