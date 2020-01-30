@@ -9,7 +9,6 @@ const TokenService = {
   clearAuthToken() {
     window.sessionStorage.removeItem("token")
     window.sessionStorage.removeItem("myId")
-
   },
   hasAuthToken() {
     return !!TokenService.getAuthToken()

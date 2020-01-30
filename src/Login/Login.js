@@ -22,7 +22,7 @@ export default class Login extends Component {
     })
       .then(res => {
         this.context.setCurrentUser(res.userId);
-        localStorage.setItem('myId', res.userId);
+        sessionStorage.setItem('myId', res.userId);
         
         //also put userId into local storage
         email.value = ''

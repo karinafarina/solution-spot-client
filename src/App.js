@@ -33,7 +33,7 @@ class App extends Component {
       //but no userId anymore
       //check if userid is in local stroage
       
-      let myUserId = localStorage.getItem('myId')
+      let myUserId = sessionStorage.getItem('myId')
       console.log('myId', myUserId)
       if (myUserId) {
         this.setCurrentUser(myUserId)
