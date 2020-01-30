@@ -1,6 +1,9 @@
 nav {
   padding: 1%, 0;
-  background-color: #F5854F;
+  background-color: #FF6E40
+
+
+;
 }
 
 nav.header{
@@ -15,8 +18,12 @@ nav.header{
 }
 
 nav.header a{
-  color: #FEE3D9;
+  color: #FBE9E7;
   padding-right: 15px;
+}
+
+nav.header a:hover {
+  color: #FFCCBC;
 }
 
 .nav-group {
@@ -26,8 +33,3 @@ nav.header a{
 .logged-in {
   vertical-align: middle;
 }
-
-/* .h5 a, .icon a {
-   padding-right: 15px;
-   color: #FEE3D9;
-} */

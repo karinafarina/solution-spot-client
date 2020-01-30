@@ -10,14 +10,17 @@
   margin: 50px auto;
 }
 
+.signup-form input {
+  width: 100%;;
+}
+
 h2 {
   text-align: center;
 }
 
 button {
-  border: 1px solid #361D13;
   margin: 15px auto;
   width: 30%;
   display: block;
-  background-color: #FEE3D9;
+  background-color: #FF6E40;
 }

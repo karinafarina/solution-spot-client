@@ -1,11 +1,11 @@
 .solution-view {
   max-width: 500px;
-  margin: 75px auto;
+  margin: 100px auto;
   padding: 0 30px;
 }
 
 .solution-view h3 {
-  margin-top: 0;
+  margin-top: 20px;
 }
 
 .solution-view h5 {
@@ -26,7 +26,7 @@ form.comments {
 }
 
 textarea#new-comment {
-  width: 80%;
+  width: 100%;
   margin: 20px auto;
 }
 
@@ -36,5 +36,5 @@ form.comments input {
 }
 
 form.new-comments input {
-  color: #361D13;
+  color: #FBE9E7
 }

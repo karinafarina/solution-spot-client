@@ -1,3 +1,9 @@
+/* COLORS
+DARK: #FF6E40
+MEDIUM: #FFAB91
+LIGHT:  #FBE9E7
+TEXT: #BF360C*/
+
 * {
   box-sizing: border-box;
 }
@@ -5,12 +11,13 @@
 body {
   font-size: 24px;
   text-align: center;
-  line-height: 1.5;;
+  line-height: 1.5;
 }
 
 .App {
-  font-family: "Cantarell";
+  font-family: "Helvetica Neue";
   padding: 20px;
+  color: #BF360C;
 }
 
 ul {
@@ -20,14 +27,12 @@ ul {
 }
 a {
   text-decoration: none;  
-  color: #361D13;
 }
 
 header {
   margin-top: 50px;
 }
 .header {
-  font-family: "Tahoma";
   padding: 60px 40px;
 }
 
@@ -37,7 +42,7 @@ section {
 }
 
 section:nth-child(even) {
-  background-color: #FEE3D9;
+  background-color: #FBE9E7;
 }
 
 p {
@@ -49,31 +54,53 @@ textarea {
   vertical-align: top;
 }
 
-/* Style inputs */
-  input[type=text], select, textarea {
-  /* width: 30%; */
-  margin: 8px ;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+button {
+  margin: 15px auto;
+  width: 30%;
+  display: block;
+  background-color: #FF6E40;
+  padding: 8px 5px;
+  color: #FBE9E7;
+  border-radius: 5px;
+  box-shadow: none;
+  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Style the submit button */
-input[type=submit] {
-  /* width: 30%; */
-  /* background-color: #4CAF50; */
-  background-color: #FEE3D9;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
+button:hover {
+  -webkit-box-shadow: 1px 2px 6px 2px #FFAB91;
+  -moz-box-shadow: 1px 2px 6px 2px #FFAB91;
+  box-shadow: 1px 2px 6px 2px #FFAB91;
+}
+
+/* Style inputs */
+  input[type=text], select, textarea {
+  margin: 8px ;
+  display: inline-block;
+  border: 1px solid #3E2723;
   border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #FBE9E7;
+}
+
+input[type=submit] {
+  background-color: #FF6E40;
+  color: #FBE9E7;
+  border: 1px solid #3E2723;
+  padding: 8px 14px;
+  margin: 8px 0;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 /* Add a background color to the submit button on mouse-over */
-/* input[type=submit]:hover {
-  background-color: #45a049;
-} */
+input[type=submit]:hover {
+  background-color: #FFAB91;
+} 
+
+input:focus {
+  outline: none;
+  border: 1px solid #FF6E40;
+  box-shadow: 0 0 10px;
+}
 

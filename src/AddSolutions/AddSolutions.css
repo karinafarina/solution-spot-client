@@ -18,3 +18,7 @@ form.solutions-form input {
   margin: 8px auto;
   border: 1px solid black;
 }
+
+button.go-back {
+  margin: 5px
+}

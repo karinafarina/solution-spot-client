@@ -1,6 +1,21 @@
 .landing {
-  margin-top: 100px;
+  margin-top: 120px;
   height: 100vh;
+  color: #BF360C;
+}
+
+.banner {
+  max-width: 600px;
+  margin: 50px auto;
+  color: #BF360C;
+}
+
+.link-to-categories {
+  color: #BF360C;
+}
+
+.link-to-categories:hover {
+  color: #FF6E40;
 }
 
 footer {
@@ -9,12 +24,14 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #F5854F;
-  color: #FEE3D9
+  background-color: #FF6E40;
+  color: #FBE9E7;
+
 }
 
 .footer-content {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
+  padding: 20px 40px;
 }

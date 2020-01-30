@@ -9,16 +9,12 @@
   margin: 50px auto;
 }
 
-h2 {
-  text-align: center;
+.login-form input {
+  width: 100%;
 }
 
-button {
-  border: 1px solid #361D13;
-  margin: 15px auto;
-  width: 30%;
-  display: block;
-  background-color: #FEE3D9;
+h2 {
+  text-align: center;
 }
 
 .red {

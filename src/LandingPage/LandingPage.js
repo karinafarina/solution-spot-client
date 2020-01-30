@@ -22,7 +22,7 @@ export default class LandingPage extends Component {
         <section>
           {currentUserId ? <header>
             <h3>
-              <Link to='/categories'>
+              <Link to='/categories' className="link-to-categories">
                 Choose from Categories of issues to post your solution ideas!
               </Link>
             </h3>
