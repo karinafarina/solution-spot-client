@@ -65,7 +65,7 @@ class AddSolutions extends Component {
     return (
       <div className="add-solutions">
         <button className="go-back" type="button"><Link to="/categories">Go Back</Link></button>
-        <h3>Post New Solution</h3>
+        <h3>Post New Solution For...</h3>
         <div className="form-container">
           {currentCategory ? <h4>{currentCategory.title}</h4> : ""}
           

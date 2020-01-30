@@ -16,11 +16,13 @@ export default class Navigation extends Component {
   renderLogoutLink() {
     return (
       <div className="logged-in">
-        <Link
-          onClick={this.handleLogoutClick}
-          to='/'>
-          Logout
-        </Link>
+        <h5>
+          <Link
+            onClick={this.handleLogoutClick}
+            to='/'>
+            Logout
+          </Link>
+        </h5>
       </div>
     )
   }

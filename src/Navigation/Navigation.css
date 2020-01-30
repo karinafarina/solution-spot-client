@@ -1,6 +1,6 @@
 nav {
   padding: 1%, 0;
-  background-color: #102910;
+  background-color: #F5854F;
 }
 
 nav.header{
@@ -12,8 +12,11 @@ nav.header{
   display: flex;
   justify-content: space-between;
   padding: 0 15px;
-  color: #fff;
+}
 
+nav.header a{
+  color: #FEE3D9;
+  padding-right: 15px;
 }
 
 .nav-group {
@@ -24,6 +27,7 @@ nav.header{
   vertical-align: middle;
 }
 
-a {
+/* .h5 a, .icon a {
    padding-right: 15px;
-}
+   color: #FEE3D9;
+} */

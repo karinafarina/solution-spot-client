@@ -3,8 +3,7 @@
 }
 
 body {
-  font-size: 20px;
-  color: #0a2717;
+  font-size: 24px;
   text-align: center;
   line-height: 1.5;;
 }
@@ -17,10 +16,11 @@ body {
 ul {
   list-style-type: none;
   padding-inline-start: unset;
+  text-align: left;
 }
 a {
   text-decoration: none;  
-  color: green;
+  color: #361D13;
 }
 
 header {
@@ -37,7 +37,7 @@ section {
 }
 
 section:nth-child(even) {
-  background-color: #e9f6ef;
+  background-color: #FEE3D9;
 }
 
 p {
@@ -63,7 +63,7 @@ textarea {
 input[type=submit] {
   /* width: 30%; */
   /* background-color: #4CAF50; */
-  background-color: grey;
+  background-color: #FEE3D9;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;

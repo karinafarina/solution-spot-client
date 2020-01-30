@@ -1,7 +1,6 @@
  .login {
   max-width: 300px;
   text-align: left;
-  margin-top: 120px;
   margin: 120px auto;
 }
 
@@ -15,12 +14,21 @@ h2 {
 }
 
 button {
-  border: 1px solid green;
+  border: 1px solid #361D13;
   margin: 15px auto;
   width: 30%;
   display: block;
+  background-color: #FEE3D9;
 }
 
 .red {
   color: red;
+}
+
+form div label {
+  text-align: left;
+}
+
+form div input {
+  display: flex;
 }

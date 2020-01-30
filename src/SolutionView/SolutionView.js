@@ -140,7 +140,7 @@ class SolutionView extends Component  {
     const { commentsForSolution, currentSolution, currentCategory } = this.state;
     return (
       <div className="solution-view">
-        <Link to="/categories"><h5>Go back</h5></Link>
+        <Link to="/categories"><button className="go-back" type="button">Go back</button></Link>
         <h3>{currentCategory ? currentCategory.title : ""}</h3>
         <p>{currentSolution.content}</p>
         <button
