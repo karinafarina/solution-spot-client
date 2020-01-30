@@ -27,7 +27,7 @@ class SolutionView extends Component  {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        "authorization": `Bearer ${window.localStorage.getItem("token")}`,
+        "authorization": `Bearer ${window.sessionStorage.getItem("token")}`,
       }
     })
       .then(res => {
@@ -83,7 +83,7 @@ class SolutionView extends Component  {
       method: 'POST',
       body: JSON.stringify(newComment),
       headers: {
-        "authorization": `Bearer ${window.localStorage.getItem("token")}`,
+        "authorization": `Bearer ${window.sessionStorage.getItem("token")}`,
         "content-type": "application/json"
       }
     }
@@ -115,7 +115,7 @@ class SolutionView extends Component  {
     fetch(`${config.API_BASE_URL}/solutions/${solutionId}`, {
       method: 'DELETE',
       headers: {
-        "authorization": `Bearer ${window.localStorage.getItem("token")}`,
+        "authorization": `Bearer ${window.sessionStorage.getItem("token")}`,
         'content-type': 'application/json'
       },
     })

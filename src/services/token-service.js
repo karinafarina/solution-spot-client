@@ -1,14 +1,14 @@
 
 const TokenService = {
   saveAuthToken(token) {
-    window.localStorage.setItem("token", token)
+    window.sessionStorage.setItem("token", token)
   },
   getAuthToken() {
-    return window.localStorage.getItem("token")
+    return window.sessionStorage.getItem("token")
   },
   clearAuthToken() {
-    window.localStorage.removeItem("token")
-    window.localStorage.removeItem("myId")
+    window.sessionStorage.removeItem("token")
+    window.sessionStorage.removeItem("myId")
 
   },
   hasAuthToken() {
