@@ -137,7 +137,7 @@ class SolutionView extends Component  {
   }
 
   render() {
-    const { commentsForSolution, currentSolution, currentCategory } = this.state;
+    const { commentsForSolution, currentSolution = ["loading..."], currentCategory } = this.state;
     return (
       <div className="solution-view">
         <Link to="/categories"><button className="go-back" type="button">Go back</button></Link>
