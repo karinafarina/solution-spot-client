@@ -10,6 +10,10 @@
   max-width: 375px;
 }
 
+.category-container h3 {
+  color: #3E2723;
+}
+
 form.categories {
   display: flex;
   flex-direction: column;
@@ -31,4 +35,8 @@ form.categories input {
 
 .filtered-solutions a {
   color: #FF6E40;
+}
+
+.filtered-solutions h4 {
+  color: #3E2723;
 }

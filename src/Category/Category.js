@@ -15,7 +15,7 @@ export default class Category extends Component {
     return (
       <div className="category-container">
         <h2>Societal Issues to Discuss</h2>
-        <h3>Categories</h3>
+        <h3>Get started by selecting a category or, add a new one!</h3>
         
         <form className="categories">
           
@@ -29,7 +29,7 @@ export default class Category extends Component {
         <AddCategory/>
         
         <div className="filtered-solutions">
-          {currentCategory ? <h4>Solutions for {currentCategory.title}</h4> : <h4>All Solutions</h4>}
+          {currentCategory ? <h4>View and comment on these previous solutions for {currentCategory.title}</h4> : ""}
           
             <FilteredSolutions />
           

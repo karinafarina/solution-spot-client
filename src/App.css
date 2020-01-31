@@ -2,7 +2,9 @@
 DARK: #FF6E40
 MEDIUM: #FFAB91
 LIGHT:  #FBE9E7
-TEXT: #BF360C*/
+TEXT: #BF360C
+DARKTEXT: #3E2723
+*/
 
 * {
   box-sizing: border-box;
@@ -15,7 +17,7 @@ body {
 }
 
 .App {
-  font-family: "Helvetica Neue";
+  font-family: Montserrat;
   padding: 20px;
   color: #BF360C;
 }
@@ -56,10 +58,9 @@ textarea {
 
 button {
   margin: 15px auto;
-  width: 30%;
   display: block;
   background-color: #FF6E40;
-  padding: 8px 5px;
+  padding: 8px 24px;
   color: #FBE9E7;
   border-radius: 5px;
   box-shadow: none;
@@ -81,6 +82,8 @@ button:hover {
   border-radius: 4px;
   box-sizing: border-box;
   background-color: #FBE9E7;
+  height: 30px;
+  padding: 10px;
 }
 
 input[type=submit] {
@@ -104,3 +107,17 @@ input:focus {
   box-shadow: 0 0 10px;
 }
 
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 768px) {
+  .category-container {
+    max-width: 815px;
+  }
+
+  .solution-view {
+    max-width: 815px;
+  }
+  h2 {
+    font-size: 1.8em;
+  }
+}

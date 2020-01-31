@@ -1,5 +1,5 @@
 .add-solutions {
-  max-width: 500px;
+  max-width: 800px;
   margin: 100px auto 120px;
 }
 
@@ -10,8 +10,9 @@ form.solutions-form {
 }
 
 textarea#content {
-  width: 80%;
+  width: 70%;
   margin: 20px auto;
+  height: 300px;
 }
 
 form.solutions-form input {

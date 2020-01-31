@@ -28,6 +28,7 @@ form.comments {
 textarea#new-comment {
   width: 100%;
   margin: 20px auto;
+  height: 300px;
 }
 
 form.comments input {
