@@ -12,7 +12,6 @@ export default class LandingPage extends Component {
   // }
   render() {
     const { currentUserId } = this.context;
-    console.log('curenuserid', currentUserId)
     return (
       <div className="landing">
         <h1>Solution Spot</h1>

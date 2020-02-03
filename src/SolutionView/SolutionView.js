@@ -100,7 +100,6 @@ class SolutionView extends Component  {
           commentsForSolution,
           textAreaValue: "",
         })
-        console.log('texval', this.state.textAreaValue)
       })
       .catch(error => {
         console.log(error)
@@ -120,7 +119,6 @@ class SolutionView extends Component  {
       },
     })
       .then(res => {
-        console.log('res', res)
         if (res.ok) {
           return res.json();
         }
@@ -140,24 +138,24 @@ class SolutionView extends Component  {
     const { commentsForSolution, currentSolution = ["loading..."], currentCategory } = this.state;
     return (
       <div className="solution-view">
-        <Link to="/categories"><button className="go-back" type="button">Go back</button></Link>
         <h3>{currentCategory ? currentCategory.title : ""}</h3>
         <p>{currentSolution.content}</p>
         <button
           className='solution-delete'
           type='button'
           onClick={this.handleClickDelete}>
-          Delete
+          Delete Solution
         </button>
         
-        {/* // TODO: CREATE A FUNCTIONAL COMPONENT FOR RENDERING AND STYLING COMMENTS */}
         <Comments commentsForSolution={commentsForSolution}/>
         
         <form className="new-comments" onSubmit={this.handleCommentSubmit}>
-          <label htmlFor="new-comment" id="new-comment">Comment</label>
+          <label htmlFor="new-comment" id="new-comment">Add comment for this solution idea</label>
           <textarea name="new-comment" id="new-comment" cols="50" rows="12" value={this.state.textAreaValue} onChange={e => this.handleCommentInput(e)}></textarea>
           <input type="submit"/>
         </form>
+        <Link to="/categories"><button className="go-back" type="button">Cancel</button></Link>
+
       </div>
     )
   }

@@ -39,3 +39,7 @@ form.comments input {
 form.new-comments input {
   color: #FBE9E7
 }
+
+.new-comments {
+  text-align-last: left;
+}

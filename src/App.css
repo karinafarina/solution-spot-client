@@ -17,7 +17,7 @@ body {
 }
 
 .App {
-  font-family: Montserrat;
+  font-family: 'Cuprum', sans-serif;
   padding: 20px;
   color: #BF360C;
 }
@@ -48,8 +48,10 @@ section:nth-child(even) {
 }
 
 p {
+  font-size: 16px;
   margin: 0 auto;
   max-width: 650px;
+  color: #3E2723;
 }
 
 textarea {
@@ -83,7 +85,6 @@ button:hover {
   box-sizing: border-box;
   background-color: #FBE9E7;
   height: 30px;
-  padding: 10px;
 }
 
 input[type=submit] {
@@ -110,6 +111,14 @@ input:focus {
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 768px) {
+  p {
+    font-size: 20px;
+    margin-bottom: 32px;
+  }
+
+  .solution-view p {
+    margin-bottom: 32px;
+  }
   .category-container {
     max-width: 815px;
   }
@@ -118,6 +127,35 @@ input:focus {
     max-width: 815px;
   }
   h2 {
-    font-size: 1.8em;
+    font-size: 2em;
+  }
+
+  .landing h1 {
+    font-size: 56px;
+  }
+
+  .solution-view h3 {
+    font-size: 2em;
+  }
+
+  .add-solutions h3 {
+    font-size: 2em;
+  }
+
+  .add-solutions h4 {
+    font-size: 1.6em;
+  }
+
+  form.solutions-form input[type="submit"] {
+    width: 8%;
+    margin: 8px;
+  }
+
+  input[type=text], select, textarea {
+    padding: 10px;
+  }
+
+  .category-container h3 {
+    font-size: 26px;
   }
 }

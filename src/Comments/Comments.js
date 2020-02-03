@@ -7,8 +7,8 @@ export class Comments extends Component {
     const { commentsForSolution } = this.props;
     return (
       <div className="comments">
-        <h4>Comments</h4>
-        {commentsForSolution ? commentsForSolution.map(console.log('comments', commentsForSolution) || ((comment, index) => <p key={index}>{comment.content}</p>)) : ""}
+        <h4>Previous Comments</h4>
+        {commentsForSolution ? commentsForSolution.map((comment, index) => <p key={index}>{comment.content}</p>) : ""}
       </div>
     )
   }

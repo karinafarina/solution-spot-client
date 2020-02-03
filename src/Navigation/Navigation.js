@@ -16,13 +16,11 @@ export default class Navigation extends Component {
   renderLogoutLink() {
     return (
       <div className="logged-in">
-        <h5>
-          <Link
-            onClick={this.handleLogoutClick}
-            to='/'>
-            Logout
-          </Link>
-        </h5>
+        <Link
+          onClick={this.handleLogoutClick}
+          to='/'>
+          Logout
+        </Link>
       </div>
     )
   }
@@ -30,16 +28,14 @@ export default class Navigation extends Component {
   renderLoginLink() {
     return (
       <div className="logged-out">
-        <h5>
-          <Link
-            to='/sign-up'>
-            Sign Up
-          </Link>
-          <Link
-            to='/login'>
-            Login
-          </Link>
-        </h5>
+        <Link
+          to='/sign-up'>
+          Sign Up
+        </Link>
+        <Link
+          to='/login'>
+          Login
+        </Link>
       </div> 
     )
   }
@@ -47,11 +43,11 @@ export default class Navigation extends Component {
   render() {
     return (
       <nav className="header">
-        <h5 className="icon">
+        <div className="icon">
           <Link to='/'>
             Solution Spot
             </Link>
-        </h5>
+        </div>
         <div className="nav-group">
           {TokenService.hasAuthToken()
             ? this.renderLogoutLink()

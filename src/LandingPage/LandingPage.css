@@ -11,11 +11,11 @@
 }
 
 .link-to-categories {
-  color: #BF360C;
+  color: #3E2723
 }
 
 .link-to-categories:hover {
-  color: #FF6E40;
+  color: #BF360C;
 }
 
 footer {
@@ -33,5 +33,5 @@ footer {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 20px;
+  padding: 10px 20px;
 }

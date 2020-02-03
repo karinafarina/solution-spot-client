@@ -64,7 +64,6 @@ class AddSolutions extends Component {
     const currentCategory = categories.find(category => currentCategoryId === category.id);
     return (
       <div className="add-solutions">
-        <button className="go-back" type="button"><Link to="/categories">Go Back</Link></button>
         <h3>Post New Solution For...</h3>
         <div className="form-container">
           {currentCategory ? <h4>{currentCategory.title}</h4> : ""}
@@ -75,8 +74,9 @@ class AddSolutions extends Component {
             {/* {this.state.content.touched && (
               <ValidationError message={contentError} />
             )} */}
-            <button type="submit">Submit</button>
+            <input type="submit" />
           </form>
+          <Link to="/categories"><button className="go-back" type="button">Cancel</button></Link>
         </div>
       </div>
     )

@@ -29,7 +29,7 @@ export default class Category extends Component {
         <AddCategory/>
         
         <div className="filtered-solutions">
-          {currentCategory ? <h4>View and comment on these previous solutions for {currentCategory.title}</h4> : ""}
+          {currentCategory ? <h4>View and comment on or add solution for {currentCategory.title}</h4> : ""}
           
             <FilteredSolutions />
           

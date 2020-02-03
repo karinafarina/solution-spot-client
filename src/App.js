@@ -34,15 +34,12 @@ class App extends Component {
       //check if userid is in local stroage
       
       let myUserId = sessionStorage.getItem('myId')
-      console.log('myId', myUserId)
       if (myUserId) {
         this.setCurrentUser(myUserId)
       }
       //if it is update state with userid from local storage
     }
-        //update current user in state
-      //this.setCurrentUser();
-    
+       
     const options = {
       method: 'GET',
       headers: {
@@ -82,11 +79,9 @@ class App extends Component {
   }
 
   deleteSolution = (solutionId) => {
-    console.log('solusionid', solutionId)
     this.setState({
       solutions: this.state.solutions.filter(solution => solution.id !== parseInt(solutionId, 10))
     })
-    console.log('solutoinsdelte', this.state.solutions)
   };
  
 

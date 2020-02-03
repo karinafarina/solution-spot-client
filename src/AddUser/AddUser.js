@@ -16,7 +16,6 @@ export default class AddUser extends Component {
     e.preventDefault();
     //get form fields from event
     const { email, userPassword, confirmPassword } = e.target;
-    console.log('pss', userPassword.value, confirmPassword.value)
     if(userPassword.value === confirmPassword.value) {
       this.setState({ error: null })
       AuthApiService.postUser({

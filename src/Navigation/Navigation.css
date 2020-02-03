@@ -14,7 +14,7 @@ nav.header{
   z-index: 10;
   display: flex;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 10px 20px;
 }
 
 nav.header a{

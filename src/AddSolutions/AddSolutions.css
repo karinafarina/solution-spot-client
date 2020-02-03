@@ -1,6 +1,10 @@
 .add-solutions {
-  max-width: 800px;
+  max-width: 815px;
   margin: 100px auto 120px;
+}
+
+.add-solutions h4 {
+  color: #3E2723;
 }
 
 form.solutions-form {
@@ -10,16 +14,18 @@ form.solutions-form {
 }
 
 textarea#content {
-  width: 70%;
+  width: 100%;
   margin: 20px auto;
   height: 300px;
 }
 
-form.solutions-form input {
+form.solutions-form input[type="submit"] {
   margin: 8px auto;
-  border: 1px solid black;
+  display: inline-block;
+  text-align: left;
 }
 
 button.go-back {
-  margin: 5px
+  margin: 5px;
+  color: #FBE9E7;
 }
